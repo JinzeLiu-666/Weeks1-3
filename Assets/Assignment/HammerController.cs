@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class HammerController : MonoBehaviour
 {
-    public GameObject hammerA;
-    public GameObject hammerB;
+    private float rotationAngle = 10f; // 
 
+    private Quaternion initialRotation;
+    private Quaternion targetRotation;
     void Start()
     {
-
+        initialRotation = transform.rotation;
+        targetRotation = Quaternion.Euler(0, 0, rotationAngle);
     }
 
     void Update()
@@ -23,13 +25,11 @@ public class HammerController : MonoBehaviour
         // Mouse click to switch hammer
         if (Input.GetMouseButton(0))
         {
-            hammerA.SetActive(false);
-            hammerB.SetActive(true);
+            transform.rotation = targetRotation;
         }
         else
         {
-            hammerA.SetActive(true);
-            hammerB.SetActive(false);
+            transform.rotation = initialRotation;
         }
     }
 }
