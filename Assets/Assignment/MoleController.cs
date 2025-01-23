@@ -32,6 +32,7 @@ public class MoleController : MonoBehaviour
             Vector3 newScale = Vector3.Lerp(initialScale, Vector3.zero, curveValue);
             moleD.transform.localScale = newScale;
 
+            // time end stop shrink
             if (animationTime >= 1f)
             {
                 isShrinking = false;
